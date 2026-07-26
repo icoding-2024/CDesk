@@ -1,6 +1,6 @@
 $(document).ready(function () {
   // Replace this with your Web App URL after re-deploying Google Apps Script
-  const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz9eubQY4LdMK1A86fytI_t99kkq_I1kPzKfEKik7aAgvvDbRiWUmroM9ia6oRsMaXUQw/exec";
+  const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxkYsgDgLohIvLrzLXP7ocU9018y5m2Q_P5HsRlWdUg34yqLc8pG8qa0Gt1kZw6VLn-aA/exec";
 
 // Service Worker Registration for PWA capability
   if ('serviceWorker' in navigator) {
