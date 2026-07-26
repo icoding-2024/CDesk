@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CounselDesk</title>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col">
+
+  <header class="bg-brand-600 text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold flex items-center gap-2">
+        <i class="fa-solid fa-scale-balanced"></i> CounselDesk
+      </h1>
+    </div>
+  </header>
+
+  <main class="max-w-4xl w-full mx-auto p-4 md:p-6 flex-grow">
+    
+    <div class="border-b border-gray-200 mb-6">
+      <nav class="flex space-x-4" aria-label="Tabs" id="tab-container">
+        <button id="tab-btn-add-client" data-target="tab-add-client" class="tab-btn active-tab flex items-center gap-2 py-3 px-4 text-sm font-semibold border-b-2 border-brand-600 text-brand-600 transition-colors">
+          <i class="fa-solid fa-plus"></i> Clients
+        </button>
+        
+        <button id="tab-btn-coming-soon" data-target="tab-coming-soon" class="tab-btn flex items-center gap-2 py-3 px-4 text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-brand-600 transition-colors">
+          <i class="fa-solid fa-clock-rotate-left"></i> Coming Soon
+        </button>
+      </nav>
+    </div>
+
+    <section id="tab-add-client" class="tab-content block">
+      <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+        <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b border-gray-100">Add New Client</h2>
+        
+        <form id="add-client-form" class="space-y-4">
+          <input type="hidden" id="client_id" name="client_id">
+          <input type="hidden" id="created_timestamp" name="created_timestamp">
+
+          <div class="bg-brand-50 border border-brand-100 rounded-md p-3 flex justify-between items-center mb-4">
+            <span class="text-xs font-semibold text-brand-700 uppercase tracking-wider">Generated Client ID</span>
+            <span id="display-client-id" class="font-mono font-bold text-brand-800 text-sm">Generating...</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label for="client_name" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Full Name *</label>
+              <input type="text" id="client_name" name="client_name" required class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent">
+            </div>
+
+            <div>
+              <label for="client_phone" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Phone Number *</label>
+              <input type="tel" id="client_phone" name="client_phone" required class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent">
+            </div>
+
+            <div>
+              <label for="client_email" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Email ID</label>
+              <input type="email" id="client_email" name="client_email" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent">
+            </div>
+
+            <div>
+              <label for="update_date" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Updation Date *</label>
+              <input type="date" id="update_date" name="update_date" required class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent">
+            </div>
+          </div>
+
+          <div>
+            <label for="meeting_notes" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Meeting Notes <span class="text-gray-400 font-normal lowercase">(optional)</span></label>
+            <textarea id="meeting_notes" name="meeting_notes" rows="4" placeholder="Enter key points discussed during the meeting..." class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent resize-y"></textarea>
+          </div>
+
+          <div class="pt-4 flex justify-end">
+            <button type="submit" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-2 rounded-md shadow text-sm transition-colors flex items-center gap-2">
+              <i class="fa-solid fa-floppy-disk"></i> Save Client Record
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="tab-coming-soon" class="tab-content hidden">
+      <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-12 text-center">
+        <div class="inline-flex justify-center items-center w-16 h-16 rounded-full bg-brand-50 text-brand-600 mb-4">
+          <i class="fa-solid fa-spinner fa-spin text-2xl"></i>
+        </div>
+        <h2 class="text-xl font-bold text-gray-800">In Progress</h2>
+        <p class="text-gray-500 text-sm mt-2 max-w-sm mx-auto">This module is currently under development and will be available in an upcoming update.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
